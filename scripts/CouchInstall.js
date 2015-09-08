@@ -75,7 +75,7 @@ shell.echo('Now Installing CouchDb dependencies');
 
   shell.echo('Fetching Couchdb package from Apache ftp into tmp');
   shell.exec('cd /tmp');
-  if(shell.exec('"wget" + "couch_version" -y').code !==0){
+  if(shell.exec('"wget" + "couch_version" ').code !==0){
     shell.echo('Failed to fetch couchdb, please check the link address');
     shell.exit(0);
   }
