@@ -25,6 +25,7 @@ shell.echo('Now installing Dependencies');
 
 shell.echo('Now Installing CouchDb dependencies');
 
+
   if(shell.exec('sudo apt-get install build-essential -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
@@ -65,6 +66,7 @@ shell.echo('Now Installing CouchDb dependencies');
    shell.echo('Failed to install dependencies');
 
   }
+
   if(shell.exec('sudo apt-get install libcurl14-openssl-dev -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
@@ -83,6 +85,7 @@ shell.echo('Installing Couchdb');
   shell.exec('cd apache-couchdb-*');
   shell.exec('./configure && make -y');
   shell.exec('sudo make install -y');
+
 
 
 shell.exit(0);
