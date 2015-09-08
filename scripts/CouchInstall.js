@@ -29,55 +29,64 @@ shell.echo('Now Installing CouchDb dependencies');
   if(shell.exec('sudo apt-get install build-essential -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
+   shell.exit(1);
 
   }
   if(shell.exec('sudo apt-get install erlang-base-hipe -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
+   shell.exit(1);
 
   }
   if(shell.exec('sudo apt-get install erlang-dev -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
+   shell.exit(1);
 
   }
   if(shell.exec('sudo apt-get install erlang-manpages -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
+   shell.exit(1);
 
   }
   if(shell.exec('sudo apt-get install erlang-eunit -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
+   shell.exit(1);
 
   }
   if(shell.exec('sudo apt-get install erlang-nox -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
+   shell.exit(1);
 
   }
   if(shell.exec('sudo apt-get install libicu-dev -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
+   shell.exit(1);
 
   }
-  if(shell.exec('sudo apt-get install libmozjs-dev -y').code !== 0){
+//  if(shell.exec('sudo apt-get install libmozjs-dev -y').code !== 0){
 
-   shell.echo('Failed to install dependencies');
+//   shell.echo('Failed to install dependencies');
+//   shell.exit(1);
 
-  }
+//  }
 
   if(shell.exec('sudo apt-get install libcurl14-openssl-dev -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
+   shell.exit(1);
 
   }
 
   shell.echo('Fetching Couchdb package from Apache ftp into tmp');
   shell.exec('cd /tmp');
-  if(shell.exec('"wget" + "couch_version" ').code !==0){
+  if(shell.exec('wget $couch_version').code !==0){
     shell.echo('Failed to fetch couchdb, please check the link address');
-    shell.exit(0);
+    shell.exit(1);
   }
 
 shell.echo('Installing Couchdb');
