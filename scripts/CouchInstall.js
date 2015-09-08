@@ -73,7 +73,6 @@ shell.echo('Now Installing CouchDb dependencies');
    shell.echo('Failed to install dependencies');
    shell.exit(1);
 
-
   }
 
   if(shell.exec('sudo aptitude install libcurl14-openssl-dev -y').code !== 0){
