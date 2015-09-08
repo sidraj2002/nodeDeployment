@@ -1,5 +1,5 @@
 var shell = require('shelljs');
-var couch_version = "http://ftp.fau.de/apache/couchdb/source/1.6.1/apache-couchdb-1.6.1.tar.gz";
+var couch_version = "wget http://ftp.fau.de/apache/couchdb/source/1.6.1/apache-couchdb-1.6.1.tar.gz";
 
 if(shell.exec('node -v').code !==0){
   shell.echo('NodeJS not found');
@@ -68,14 +68,14 @@ shell.echo('Now Installing CouchDb dependencies');
    shell.exit(1);
 
   }
-  if(shell.exec('sudo aptitude install libmozjs-dev -y').code !== 0){
+  if(shell.exec('sudo aptitude install libmozjs185-dev -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
    shell.exit(1);
 
   }
 
-  if(shell.exec('sudo aptitude install libcurl14-openssl-dev -y').code !== 0){
+  if(shell.exec('sudo aptitude install libcurl14-gnutls-dev -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
    shell.exit(1);
@@ -83,18 +83,19 @@ shell.echo('Now Installing CouchDb dependencies');
   }
 
   shell.echo('Fetching Couchdb package from Apache ftp into tmp');
-  shell.exec('cd /tmp');
-  if(shell.exec('wget $couch_version').code !==0){
+  shell.cd('/tmp');;
+  if(shell.exec("wget http://ftp.fau.de/apache/couchdb/source/1.6.1/apache-couchdb-1.6.1.tar.gz").code !==0){
     shell.echo('Failed to fetch couchdb, please check the link address');
     shell.exit(1);
   }
 
 shell.echo('Installing Couchdb');
-  shell.exec('tar xvzf apache-couchdb-* -y');
-  shell.exec('cd apache-couchdb-*');
-  shell.exec('./configure && make -y');
-  shell.exec('sudo make install -y');
-
+  shell.exec('tar -xvzf apache-couchdb-1.6.1.tar.gz '); //Check 'globs' for pattern matching
+  shell.cd('apache-couchdb-1.6.1');
+  shell.exec('./configure');
+  shell.exec('make');
+  shell.exec('sudo make install');
+shell.cd('..');
 
 
 shell.exit(0);
