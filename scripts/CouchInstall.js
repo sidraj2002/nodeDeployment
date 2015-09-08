@@ -82,7 +82,7 @@ shell.echo('Installing Couchdb');
   shell.exec('tar xvzf apache-couchdb-*');
   shell.exec('cd apache-couchdb-*');
   shell.exec('./configure && make');
-  shell.exec('sudo make install')
+  shell.exec('sudo make install');
 
 
 shell.exit(0);
