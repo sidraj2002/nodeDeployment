@@ -68,14 +68,15 @@ shell.echo('Now Installing CouchDb dependencies');
    shell.exit(1);
 
   }
-//  if(shell.exec('sudo apt-get install libmozjs-dev -y').code !== 0){
+  if(shell.exec('sudo aptitude install libmozjs-dev -y').code !== 0){
 
-//   shell.echo('Failed to install dependencies');
-//   shell.exit(1);
+   shell.echo('Failed to install dependencies');
+   shell.exit(1);
 
-//  }
 
-  if(shell.exec('sudo apt-get install libcurl14-openssl-dev -y').code !== 0){
+  }
+
+  if(shell.exec('sudo aptitude install libcurl14-openssl-dev -y').code !== 0){
 
    shell.echo('Failed to install dependencies');
    shell.exit(1);
